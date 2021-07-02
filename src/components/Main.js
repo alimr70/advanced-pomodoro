@@ -2,8 +2,8 @@ const Main = () => {
   return (
     <>
       {/* Navbar */}
-      <header>
-        <div className="mx-auto py-2 px-3 sm:w-9/12 md:w-7/12 lg:w-1/2">
+      <header className="flex items-center justify-center">
+        <div className="w-full mx-auto py-2 px-3 sm:w-9/12 md:w-7/12 lg:w-1/2">
           <nav className="flex items-center justify-between">
             <div>
               <svg
