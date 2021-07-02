@@ -1,5 +1,7 @@
 import Main from "./components/Main";
 import AddSession from "./components/AddSession";
+import SessionsDay from "./components/SessionsDay";
+import Sessions from "./components/Sessions";
 
 function App() {
   return (

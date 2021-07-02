@@ -40,7 +40,8 @@ const AddSession = () => {
             <select
               name="projectName"
               id="projectName"
-              className="bg-gray-900 p-2 rounded-md">
+              className="bg-gray-900 p-2 rounded-md"
+              required>
               <option value="">Choose project/activity</option>
               <option value="Project1">Project1</option>
               <option value="Project2">Project2</option>
@@ -50,7 +51,8 @@ const AddSession = () => {
             <select
               name="projectName"
               id="projectName"
-              className="bg-gray-900 p-2 rounded-md">
+              className="bg-gray-900 p-2 rounded-md"
+              required>
               <option value="">Choose session duration</option>
               <option value="5">5</option>
               <option value="10">10</option>
@@ -72,6 +74,7 @@ const AddSession = () => {
                 name="time"
                 className="bg-gray-900 w-auto"
                 value={currentTime}
+                required
               />
             </div>
           </div>
