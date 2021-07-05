@@ -1,4 +1,4 @@
-import Main from "./components/Main";
+import HomePage from "./components/HomePage";
 import AddSession from "./components/AddSession";
 import SessionsDay from "./components/SessionsDay";
 import Sessions from "./components/Sessions";
@@ -8,7 +8,7 @@ import Settings from "./components/Settings";
 function App() {
   return (
     <div className="App text-green-400 text-2xl font-bold bg-gray-900 h-full grid">
-      <Settings />
+      <HomePage />
     </div>
   );
 }
