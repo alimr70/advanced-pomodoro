@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { GoBackIcon, TrashcanIcon, RoundedPlusIcon, EditIcon } from "./icons";
 
 const Projects = () => {
@@ -17,9 +18,11 @@ const Nav = () => {
       <header className="row-span-1 flex items-center justify-center">
         <div className="mx-auto py-2 px-3 w-full sm:w-9/12 md:w-7/12 lg:w-1/2">
           <nav className="flex items-center">
-            <div>
-              <GoBackIcon />
-            </div>
+            <Link to="/">
+              <div>
+                <GoBackIcon />
+              </div>
+            </Link>
             <div className="mx-auto">Projects &amp; Activities</div>
           </nav>
         </div>

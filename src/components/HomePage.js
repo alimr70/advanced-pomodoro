@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { Store } from "../context/Store";
+import { toggleSidbar } from "../context/actions";
+import { Link } from "react-router-dom";
 import {
   HamburgerMenuIcon,
   RoundedPlusIcon,
@@ -22,19 +26,27 @@ const HomePage = () => {
 };
 
 const Nav = () => {
+  const { state, dispatch } = useContext(Store);
+  const isSidebarOpen = state.isSidebarOpen;
   return (
     <>
       {/* Navbar */}
       <header className="flex items-center justify-center">
         <div className="w-full mx-auto py-2 px-3 sm:w-9/12 md:w-7/12 lg:w-1/2">
           <nav className="flex items-center justify-between">
-            <div>
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                dispatch(toggleSidbar(!isSidebarOpen));
+              }}>
               <HamburgerMenuIcon />
             </div>
             <div>{new Date(Date.now()).toDateString()}</div>
-            <div>
-              <RoundedPlusIcon />
-            </div>
+            <Link to="/addSession">
+              <div>
+                <RoundedPlusIcon />
+              </div>
+            </Link>
           </nav>
         </div>
       </header>
@@ -43,27 +55,42 @@ const Nav = () => {
 };
 
 const Sidebar = () => {
+  const { state, dispatch } = useContext(Store);
+  const isSidebarOpen = state.isSidebarOpen;
   return (
     <>
       {/* Sidebar - additional app option links */}
-      <aside className="bg-gray-700 h-screen absolute flex flex-col items-start transform -translate-x-0">
-        <div className="p-2">
+      <aside
+        className={`bg-gray-700 h-screen absolute flex flex-col items-start transform -translate-x-${
+          isSidebarOpen ? "0" : "full"
+        } transition ease-in duration-400`}>
+        <div
+          className="p-2 mt-4 cursor-pointer"
+          onClick={() => {
+            dispatch(toggleSidbar(!isSidebarOpen));
+          }}>
           <CloseMenuIcon />
         </div>
         <div className="mt-5 mr-5">
           <ul className="pl-3">
-            <li className="pt-5 font-light flex items-center">
-              <SessionsIcon />
-              Sessions
-            </li>
-            <li className="pt-5 font-light flex items-center">
-              <StarIcon color="text-green-400" />
-              Projects &amp; activities
-            </li>
-            <li className="pt-5 font-light flex items-center">
-              <SettingsIcon />
-              Settings
-            </li>
+            <Link to="/sessionsDay">
+              <li className="pt-5 font-light flex items-center">
+                <SessionsIcon />
+                Sessions
+              </li>
+            </Link>
+            <Link to="/projects">
+              <li className="pt-5 font-light flex items-center">
+                <StarIcon color="text-green-400" />
+                Projects &amp; activities
+              </li>
+            </Link>
+            <Link to="/settings">
+              <li className="pt-5 font-light flex items-center">
+                <SettingsIcon />
+                Settings
+              </li>
+            </Link>
           </ul>
         </div>
       </aside>
