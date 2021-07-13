@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 import { GoBackIcon, TrashcanIcon } from "./icons";
+import { Store } from "../context/Store";
 
 const Sessions = () => {
   return (
@@ -32,54 +34,48 @@ const Nav = () => {
 };
 
 const Main = () => {
+  const { state } = useContext(Store);
+  const { sessions, projects } = state;
+  let { day } = useParams();
+  const targetSessions = sessions.filter(
+    (session) => session.sessionDay === day
+  );
+  const getProjectTitle = (projectId) => {
+    const targetProject = projects.find((project) => project.id === projectId);
+    return targetProject.title;
+  };
   return (
     <>
       {/* Main section - working session time options buttons */}
       <main className="bg-gray-800 py-1 row-span-6">
-        <div className="py-1 flex items-center justify-center font-normal">
-          {/* Stars */}
-          <div className="bg-black p-1 rounded-md flex items-center justify-center ">
-            30
-          </div>
-
-          {/* Sessions Day */}
-          <div className="mx-5 bg-gray-900 p-1 rounded-md">Project One</div>
-
-          {/* Total minutes cound */}
-          <div>
-            <TrashcanIcon />
-          </div>
-        </div>
-        <div className="py-1 flex items-center justify-center font-normal">
-          {/* Stars */}
-          <div className="bg-black p-1 rounded-md flex items-center justify-center ">
-            30
-          </div>
-
-          {/* Sessions Day */}
-          <div className="mx-5 bg-gray-900 p-1 rounded-md">Project One</div>
-
-          {/* Total minutes cound */}
-          <div>
-            <TrashcanIcon />
-          </div>
-        </div>
-        <div className="py-1 flex items-center justify-center font-normal">
-          {/* Stars */}
-          <div className="bg-black p-1 rounded-md flex items-center justify-center ">
-            30
-          </div>
-
-          {/* Sessions Day */}
-          <div className="mx-5 bg-gray-900 p-1 rounded-md">Project One</div>
-
-          {/* Total minutes cound */}
-          <div>
-            <TrashcanIcon />
-          </div>
-        </div>
+        {targetSessions.map((session) => (
+          <Session
+            key={session.id}
+            workingMinutes={session.workingMinutes}
+            projectTitle={getProjectTitle(session.parentProject)}
+          />
+        ))}
       </main>
     </>
+  );
+};
+
+const Session = ({ workingMinutes, projectTitle }) => {
+  return (
+    <div className="py-1 flex items-center justify-center font-normal">
+      {/* Stars */}
+      <div className="bg-black p-1 rounded-md flex items-center justify-center ">
+        {workingMinutes}
+      </div>
+
+      {/* Sessions Day */}
+      <div className="mx-5 bg-gray-900 p-1 rounded-md">{projectTitle}</div>
+
+      {/* Total minutes cound */}
+      <div>
+        <TrashcanIcon />
+      </div>
+    </div>
   );
 };
 

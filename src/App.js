@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import AddSession from "./components/AddSession";
-import SessionsDay from "./components/SessionsDay";
+import WorkingDays from "./components/WorkingDays";
 import Sessions from "./components/Sessions";
 import Projects from "./components/Projects";
 import Settings from "./components/Settings";
@@ -14,8 +14,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/addSession" component={AddSession} />
-          <Route exact path="/sessionsDay" component={SessionsDay} />
-          <Route exact path="/sessions" component={Sessions} />
+          <Route exact path="/workingDays" component={WorkingDays} />
+          <Route exact path="/sessions/:day" component={Sessions} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/time/:mins" component={TimeCounter} />

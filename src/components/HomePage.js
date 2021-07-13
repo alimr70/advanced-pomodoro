@@ -27,7 +27,7 @@ const HomePage = () => {
 
 const Nav = () => {
   const { state, dispatch } = useContext(Store);
-  const isSidebarOpen = state.isSidebarOpen;
+  const { isSidebarOpen } = state;
   return (
     <>
       {/* Navbar */}
@@ -73,7 +73,7 @@ const Sidebar = () => {
         </div>
         <div className="mt-5 mr-5">
           <ul className="pl-3">
-            <Link to="/sessionsDay">
+            <Link to="/workingDays">
               <li className="pt-5 font-light flex items-center">
                 <SessionsIcon />
                 Sessions
