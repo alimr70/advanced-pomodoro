@@ -104,15 +104,15 @@ const Main = () => {
       {/* Main section - working session time options buttons */}
       <main className="bg-gray-800 py-1">
         <div className="h-full mx-auto md:w-3/5 grid grid-cols-1 gap-5 xs:grid-rows-3 xs:grid-cols-3 xs:gap-10">
-          <button className="time-btn">5</button>
-          <button className="time-btn">10</button>
-          <button className="time-btn">15</button>
-          <button className="time-btn">20</button>
-          <button className="time-btn">25</button>
-          <button className="time-btn">30</button>
-          <button className="time-btn">40</button>
-          <button className="time-btn">50</button>
-          <button className="time-btn">60</button>
+          <TimeBtn minsCount="5" />
+          <TimeBtn minsCount="10" />
+          <TimeBtn minsCount="15" />
+          <TimeBtn minsCount="20" />
+          <TimeBtn minsCount="25" />
+          <TimeBtn minsCount="30" />
+          <TimeBtn minsCount="40" />
+          <TimeBtn minsCount="50" />
+          <TimeBtn minsCount="60" />
         </div>
       </main>
     </>
@@ -149,6 +149,14 @@ const Footer = () => {
         </div>
       </footer>
     </>
+  );
+};
+
+const TimeBtn = ({ minsCount }) => {
+  return (
+    <Link to={`/time/${minsCount}`} className="m-auto">
+      <button className="time-btn">{minsCount}</button>
+    </Link>
   );
 };
 

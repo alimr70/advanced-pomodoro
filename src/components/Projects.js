@@ -52,9 +52,9 @@ const Main = () => {
             <TrashcanIcon />
           </div>
         </div>
-        <div className="p-5 self-center mt-auto bg-green-500 rounded-full">
+        <button className="p-5 self-center mt-auto bg-green-500 rounded-full">
           <RoundedPlusIcon color="text-gray-100" />
-        </div>
+        </button>
       </main>
     </>
   );
