@@ -53,6 +53,11 @@ const Main = () => {
 };
 
 const WorkingDay = ({ day, workingMinutes }) => {
+  const { state } = useContext(Store);
+  const { one, two, three } = state.stars;
+  const isStar = (starNum, workingMinutes) => {
+    return workingMinutes > starNum ? "text-yellow-300" : "text-gray-900";
+  };
   return (
     <div className="bg-gray-900 my-px py-3 font-normal">
       <Link
@@ -61,13 +66,13 @@ const WorkingDay = ({ day, workingMinutes }) => {
         {/* Stars */}
         <div className="bg-gray-800 p-1 rounded-md flex items-center justify-center ">
           <span>
-            <StarIcon color="text-yellow-300" />
+            <StarIcon color={isStar(one, workingMinutes)} />
           </span>
           <span>
-            <StarIcon color="text-yellow-300" />
+            <StarIcon color={isStar(two, workingMinutes)} />
           </span>
           <span>
-            <StarIcon />
+            <StarIcon color={isStar(three, workingMinutes)} />
           </span>
         </div>
 
