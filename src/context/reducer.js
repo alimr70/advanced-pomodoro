@@ -17,11 +17,13 @@ const addWorkDay = (state, newWorkDay) => {
     (workDay) => workDay.day === newWorkDay.day
   );
   if (foundWorkDay) {
-    state.workDays.filter((workDay) => workDay !== foundWorkDay);
+    let newWorkDays = state.workDays.filter(
+      (workDay) => workDay.day !== foundWorkDay.day
+    );
     foundWorkDay.workingMinutes += newWorkDay.workingMinutes;
     return {
       ...state,
-      workDays: [foundWorkDay, ...state.workDays],
+      workDays: [foundWorkDay, ...newWorkDays],
     };
   }
   return {

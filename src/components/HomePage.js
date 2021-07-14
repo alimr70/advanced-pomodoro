@@ -132,6 +132,22 @@ const Main = () => {
 };
 
 const Footer = () => {
+  const { state, dispatch } = useContext(Store);
+  const { workDays } = state;
+  const { one, two, three } = state.stars;
+
+  const todaysWorkDay = workDays.find(
+    (workDay) => workDay.day === new Date(Date.now()).toDateString()
+  );
+
+  const isStar = (starNum, todaysWorkDay) => {
+    return todaysWorkDay
+      ? todaysWorkDay.workingMinutes > starNum
+        ? "text-yellow-300"
+        : "text-gray-400"
+      : "text-gray-400";
+  };
+
   return (
     <>
       {/* Footer - Wrok sessions achievment */}
@@ -141,16 +157,19 @@ const Footer = () => {
           id="footer-container"
           className="w-5/6 sm:w-4/5 md:w-4/6 lg:w-7/12 xl:w-1/2 h-full mx-auto justify-self-center self-center grid">
           <div className="grid xs:grid-flow-col items-center justify-items-center">
-            <span>Your achievment today: 140 min</span>
+            <span>
+              Your achievment today:{" "}
+              {todaysWorkDay ? todaysWorkDay.workingMinutes : 0} min
+            </span>
             <div className="flex">
               <span>
-                <StarIcon color="text-yellow-300" />
+                <StarIcon color={isStar(one, todaysWorkDay)} />
               </span>
               <span>
-                <StarIcon color="text-yellow-300" />
+                <StarIcon color={isStar(two, todaysWorkDay)} />
               </span>
               <span>
-                <StarIcon color="text-gray-400" />
+                <StarIcon color={isStar(three, todaysWorkDay)} />
               </span>
             </div>
           </div>

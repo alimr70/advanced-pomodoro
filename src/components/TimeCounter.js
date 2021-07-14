@@ -59,7 +59,7 @@ const Main = () => {
           dispatch(
             addWorkDay({
               day: new Date(Date.now()).toDateString(),
-              workingMinutes: 65,
+              workingMinutes: parseInt(mins),
             })
           );
           dispatch(
@@ -67,7 +67,7 @@ const Main = () => {
               id: nanoid(5),
               sessionDay: new Date(Date.now()).toDateString(),
               parentProject: selectedProject,
-              workingMinutes: mins,
+              workingMinutes: parseInt(mins),
             })
           );
         } else if (seconds === 0 && minutes > 0) {
@@ -102,7 +102,9 @@ const Main = () => {
               }}>
               <option value="">Choose project/activity</option>
               {state.projects.map((project) => (
-                <option value={project.id}>{project.title}</option>
+                <option key={project.id} value={project.id}>
+                  {project.title}
+                </option>
               ))}
             </select>
           </div>
