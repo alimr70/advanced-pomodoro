@@ -4,6 +4,11 @@ import reducer from "./reducer";
 
 const initialState = {
   isSidebarOpen: false,
+  stars: {
+    one: 480,
+    two: 500,
+    three: 520,
+  },
   workDays: [
     {
       day: "Wed Jul 07 2021",

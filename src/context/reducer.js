@@ -30,6 +30,36 @@ const addWorkDay = (state, newWorkDay) => {
   };
 };
 
+const changeOneStarVal = (state, oneStarVal) => {
+  return {
+    ...state,
+    stars: {
+      ...state.stars,
+      one: oneStarVal,
+    },
+  };
+};
+
+const changeTwoStarVal = (state, twoStarVal) => {
+  return {
+    ...state,
+    stars: {
+      ...state.stars,
+      two: twoStarVal,
+    },
+  };
+};
+
+const changeThreeStarVal = (state, threeStarVal) => {
+  return {
+    ...state,
+    stars: {
+      ...state.stars,
+      three: threeStarVal,
+    },
+  };
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "TOGGLE_SIDEBAR":
@@ -40,6 +70,15 @@ const reducer = (state, action) => {
 
     case "ADD_WORKDAY":
       return addWorkDay(state, action.payload.workDay);
+
+    case "CHANGE_ONE_STAR_VAL":
+      return changeOneStarVal(state, action.payload.oneStarVal);
+
+    case "CHANGE_TWO_STAR_VAL":
+      return changeTwoStarVal(state, action.payload.twoStarVal);
+
+    case "CHANGE_THREE_STAR_VAL":
+      return changeThreeStarVal(state, action.payload.threeStarVal);
 
     default:
       return state;

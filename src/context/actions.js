@@ -22,3 +22,30 @@ export const addWorkDay = (workDay) => {
     },
   };
 };
+
+export const changeOneStarVal = (oneStarVal) => {
+  return {
+    type: "CHANGE_ONE_STAR_VAL",
+    payload: {
+      oneStarVal,
+    },
+  };
+};
+
+export const changeTwoStarVal = (twoStarVal) => {
+  return {
+    type: "CHANGE_TWO_STAR_VAL",
+    payload: {
+      twoStarVal,
+    },
+  };
+};
+
+export const changeThreeStarVal = (threeStarVal) => {
+  return {
+    type: "CHANGE_THREE_STAR_VAL",
+    payload: {
+      threeStarVal,
+    },
+  };
+};

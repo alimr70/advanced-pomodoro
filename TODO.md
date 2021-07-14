@@ -14,3 +14,8 @@
 ✅ Create time counter component
 ✅ make sessions context
 ✅ save session when counter is ended
+✅ Add how many minutes for each start in the context and add the reducer for saving it on changing values
+❌ dynamically home page's stars
+❌ dynamically home page's total working minutes
+❌ dynamically display working day's stars
+❌ dynamically display working day's total working minutes
