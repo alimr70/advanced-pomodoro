@@ -73,19 +73,31 @@ const Sidebar = () => {
         </div>
         <div className="mt-5 mr-5">
           <ul className="pl-3">
-            <Link to="/workingDays">
+            <Link
+              to="/workingDays"
+              onClick={() => {
+                dispatch(toggleSidbar(!isSidebarOpen));
+              }}>
               <li className="pt-5 font-light flex items-center">
                 <SessionsIcon />
                 Sessions
               </li>
             </Link>
-            <Link to="/projects">
+            <Link
+              to="/projects"
+              onClick={() => {
+                dispatch(toggleSidbar(!isSidebarOpen));
+              }}>
               <li className="pt-5 font-light flex items-center">
                 <StarIcon color="text-green-400" />
                 Projects &amp; activities
               </li>
             </Link>
-            <Link to="/settings">
+            <Link
+              to="/settings"
+              onClick={() => {
+                dispatch(toggleSidbar(!isSidebarOpen));
+              }}>
               <li className="pt-5 font-light flex items-center">
                 <SettingsIcon />
                 Settings

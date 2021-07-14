@@ -4,3 +4,21 @@ export const toggleSidbar = (isSidebarOpen) => {
     payload: { isSidebarOpen },
   };
 };
+
+export const saveSession = (session) => {
+  return {
+    type: "SAVE_SESSION",
+    payload: {
+      session,
+    },
+  };
+};
+
+export const addWorkDay = (workDay) => {
+  return {
+    type: "ADD_WORKDAY",
+    payload: {
+      workDay,
+    },
+  };
+};

@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { Store } from "../context/Store";
 import { useParams } from "react-router";
-import { RoundedPauseIcon, RoundedStartIcon } from "./icons";
+import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
+import { RoundedPauseIcon, RoundedStartIcon, GoBackIcon } from "./icons";
+import { saveSession, addWorkDay } from "../context/actions";
 
 const AddSession = () => {
   return (
@@ -19,6 +23,11 @@ const Nav = () => {
       <header className="row-span-1 flex items-center justify-center">
         <div className="mx-auto py-2 px-3 w-full sm:w-9/12 md:w-7/12 lg:w-1/2">
           <nav className="flex items-center">
+            <Link to="/">
+              <div>
+                <GoBackIcon />
+              </div>
+            </Link>
             <div className="mx-auto">Session Timer</div>
           </nav>
         </div>
@@ -28,9 +37,12 @@ const Nav = () => {
 };
 
 const Main = () => {
+  const { state, dispatch } = useContext(Store);
+
   let { mins } = useParams();
 
   const [isCounting, setIsCounting] = useState(false);
+  const [selectedProject, setSelectedProject] = useState("");
   const [minutes, setMenutes] = useState(mins);
   const [seconds, setSeconds] = useState(0);
 
@@ -44,6 +56,20 @@ const Main = () => {
       const timerCountdown = setTimeout(() => {
         if (seconds === 0 && minutes === 0) {
           setIsCounting(false);
+          dispatch(
+            addWorkDay({
+              day: new Date(Date.now()).toDateString(),
+              workingMinutes: 65,
+            })
+          );
+          dispatch(
+            saveSession({
+              id: nanoid(5),
+              sessionDay: new Date(Date.now()).toDateString(),
+              parentProject: selectedProject,
+              workingMinutes: mins,
+            })
+          );
         } else if (seconds === 0 && minutes > 0) {
           setMenutes(minutes - 1);
           setSeconds(59);
@@ -53,7 +79,7 @@ const Main = () => {
       }, 1000);
       return () => clearTimeout(timerCountdown);
     }
-  }, [isCounting, minutes, seconds]);
+  }, [isCounting, mins, selectedProject, minutes, seconds, dispatch]);
 
   return (
     <>
@@ -70,10 +96,14 @@ const Main = () => {
               name="projectName"
               id="projectName"
               className="bg-gray-900 p-2 rounded-md"
-              required>
+              required
+              onChange={(e) => {
+                setSelectedProject(e.target.value);
+              }}>
               <option value="">Choose project/activity</option>
-              <option value="Project1">Project1</option>
-              <option value="Project2">Project2</option>
+              {state.projects.map((project) => (
+                <option value={project.id}>{project.title}</option>
+              ))}
             </select>
           </div>
 

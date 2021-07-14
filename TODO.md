@@ -12,6 +12,5 @@
 ✅ Sidebar btns
 ✅ Time btns
 ✅ Create time counter component
-❌ make sessions context
-❌ save session when counter is ended
-❌ add btn to save session with the time already passed but session didn't end yet
+✅ make sessions context
+✅ save session when counter is ended
