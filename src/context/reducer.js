@@ -33,30 +33,61 @@ const addWorkDay = (state, newWorkDay) => {
 };
 
 const changeOneStarVal = (state, oneStarVal) => {
+  let twoStarVal =
+    state.stars.two <= parseInt(oneStarVal)
+      ? parseInt(oneStarVal) + 20
+      : state.stars.two;
+  let threeStarVal =
+    state.stars.three <= parseInt(twoStarVal)
+      ? parseInt(twoStarVal) + 20
+      : state.stars.three;
   return {
     ...state,
     stars: {
-      ...state.stars,
       one: oneStarVal,
+      two: twoStarVal,
+      three: threeStarVal,
     },
   };
 };
 
 const changeTwoStarVal = (state, twoStarVal) => {
+  twoStarVal = twoStarVal < 40 ? (twoStarVal = 40) : twoStarVal;
+  let threeStarVal =
+    state.stars.three <= parseInt(twoStarVal)
+      ? parseInt(twoStarVal) + 20
+      : state.stars.three;
+
+  let oneStarVal =
+    parseInt(state.stars.one) >= twoStarVal
+      ? parseInt(state.stars.one) - 20
+      : parseInt(state.stars.one);
   return {
     ...state,
     stars: {
-      ...state.stars,
+      one: oneStarVal,
       two: twoStarVal,
+      three: threeStarVal,
     },
   };
 };
 
 const changeThreeStarVal = (state, threeStarVal) => {
+  threeStarVal = threeStarVal < 60 ? (threeStarVal = 60) : threeStarVal;
+  let twoStarVal =
+    parseInt(state.stars.two) >= threeStarVal
+      ? parseInt(state.stars.two) - 20
+      : parseInt(state.stars.two);
+
+  let oneStarVal =
+    parseInt(state.stars.one) >= twoStarVal
+      ? parseInt(state.stars.one) - 20
+      : parseInt(state.stars.one);
   return {
     ...state,
     stars: {
-      ...state.stars,
+      one: oneStarVal,
+      two: twoStarVal,
       three: threeStarVal,
     },
   };

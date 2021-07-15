@@ -99,7 +99,7 @@ const Main = () => {
             type="range"
             name="secondStar"
             id="secondStar"
-            min={40}
+            min={20}
             max={500}
             value={two}
             step={10}
@@ -131,7 +131,7 @@ const Main = () => {
             type="range"
             name="secondStar"
             id="secondStar"
-            min={60}
+            min={20}
             max={520}
             value={three}
             step={10}

@@ -5,9 +5,9 @@ import reducer from "./reducer";
 const initialState = {
   isSidebarOpen: false,
   stars: {
-    one: 480,
-    two: 500,
-    three: 520,
+    one: 20,
+    two: 40,
+    three: 60,
   },
   workDays: [
     {
