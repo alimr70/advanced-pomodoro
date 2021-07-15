@@ -26,4 +26,4 @@
 ❌ Delete session with the trash btn
 ❌ Delete project with the trash btn
 ❌ Edit project name with the edit btn
-❌ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too
+✅ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too
