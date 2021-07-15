@@ -77,10 +77,12 @@ const WorkingDay = ({ day, workingMinutes }) => {
         </div>
 
         {/* Wrok Day */}
-        <div className="mx-5">{day}</div>
+        <div className="mx-1 w-48 flex items-center justify-center">{day}</div>
 
         {/* Total minutes cound */}
-        <div>{workingMinutes} Min</div>
+        <div className="w-24 flex items-center justify-center">
+          {workingMinutes} Min
+        </div>
       </Link>
     </div>
   );

@@ -132,7 +132,7 @@ const Main = () => {
 };
 
 const Footer = () => {
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { workDays } = state;
   const { one, two, three } = state.stars;
 

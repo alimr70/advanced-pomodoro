@@ -100,7 +100,7 @@ const Main = () => {
               onChange={(e) => {
                 setSelectedProject(e.target.value);
               }}>
-              <option value="">Choose project/activity</option>
+              <option value="N/A">Choose project/activity</option>
               {state.projects.map((project) => (
                 <option key={project.id} value={project.id}>
                   {project.title}

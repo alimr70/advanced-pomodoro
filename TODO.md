@@ -19,6 +19,11 @@
 ✅ dynamically home page's total working minutes
 ✅ dynamically display working day's stars
 ✅ dynamically display working day's total working minutes
-❌ Adjust width of Sessions session component
-❌ Save new session with addSession component
+✅ Adjust width of Sessions session component
+✅ Adjust width of workingDay component
+✅ Save new session with addSession component
 ❌ Save new project with project component
+❌ Delete session with the trash btn
+❌ Delete project with the trash btn
+❌ Edit project name with the edit btn
+❌ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too

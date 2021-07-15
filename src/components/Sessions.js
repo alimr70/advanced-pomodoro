@@ -64,12 +64,14 @@ const Session = ({ workingMinutes, projectTitle }) => {
   return (
     <div className="py-1 flex items-center justify-center font-normal">
       {/* Stars */}
-      <div className="bg-black p-1 rounded-md flex items-center justify-center ">
+      <div className="bg-black w-9 p-1 rounded-md flex items-center justify-center ">
         {workingMinutes}
       </div>
 
       {/* Sessions Day */}
-      <div className="mx-5 bg-gray-900 p-1 rounded-md">{projectTitle}</div>
+      <div className="mx-5 w-72 bg-gray-900 p-1 rounded-md flex items-center justify-center">
+        {projectTitle}
+      </div>
 
       {/* Total minutes cound */}
       <div>
