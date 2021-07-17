@@ -150,11 +150,15 @@ const Footer = () => {
 
   const isStar = (starNum, todaysWorkDay) => {
     return todaysWorkDay
-      ? workingMinutes > starNum
+      ? workingMinutes >= starNum
         ? "text-yellow-300"
         : "text-gray-400"
       : "text-gray-400";
   };
+
+  const progressbarWidth = `${(workingMinutes / three) * 100}%`;
+  const progressbarOneStarWidth = `${(one / three) * 100}%`;
+  const progressbarTwoStarWidth = `${(two / three) * 100}%`;
 
   return (
     <>
@@ -179,8 +183,16 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="h-10 w-full border-2 border-green-500 rounded-md justify-self-center self-center">
-            <div className="h-full w-3/4 bg-green-500 justify-self-start self-center"></div>
+          <div className="relative h-10 w-full border-2 border-green-500 rounded-md justify-self-center self-center">
+            <div
+              className="h-full bg-green-500 justify-self-start self-center"
+              style={{ width: progressbarWidth }}></div>
+            <div
+              className="absolute top-0 left-0 h-full border-gray-500 border-r-2"
+              style={{ width: progressbarOneStarWidth }}></div>
+            <div
+              className="absolute top-0 left-0 h-full border-gray-500 border-r-2"
+              style={{ width: progressbarTwoStarWidth }}></div>
           </div>
         </div>
       </footer>
