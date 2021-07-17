@@ -33,3 +33,7 @@
 ✅ Edit project name with the edit btn
 ✅ Fix when saving new session to not accept it without a project selected
 ✅ Make progress bar dynamic
+✅ Make a popup notifcation when adding a session and a project
+❌ Make an animation effect for the popup notification
+❌ Make a sound notification when session ends
+❌ Macke a cancel session btn

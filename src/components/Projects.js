@@ -4,6 +4,7 @@ import { GoBackIcon, TrashcanIcon, RoundedPlusIcon, EditIcon } from "./icons";
 import {
   addProjcet,
   deleteProject,
+  showMsg,
   toggleAddProject,
 } from "../context/actions";
 import { Store } from "../context/Store";
@@ -136,6 +137,19 @@ const AddProject = () => {
                   id: hasId,
                   title: projectTitle,
                   workingMinutes: 0,
+                })
+              );
+              dispatch(
+                showMsg({
+                  type: "success",
+                  msg: "Project saved 👍",
+                })
+              );
+            } else {
+              dispatch(
+                showMsg({
+                  type: "error",
+                  msg: "Couldn't save project: Please write a title for project",
                 })
               );
             }

@@ -1,3 +1,10 @@
+export const showMsg = (msg) => {
+  return {
+    type: "SHOW_MSG",
+    payload: { msg },
+  };
+};
+
 export const toggleSidbar = (isSidebarOpen) => {
   return {
     type: "TOGGLE_SIDEBAR",

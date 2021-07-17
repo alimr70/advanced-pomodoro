@@ -63,7 +63,7 @@ const Sidebar = () => {
       <aside
         className={`bg-gray-700 h-screen absolute flex flex-col items-start transform -translate-x-${
           isSidebarOpen ? "0" : "full"
-        } transition ease-in duration-400`}>
+        } transition ease-in duration-400 z-10`}>
         <div
           className="p-2 mt-4 cursor-pointer"
           onClick={() => {

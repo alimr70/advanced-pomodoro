@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { RoundedPauseIcon, RoundedStartIcon, GoBackIcon } from "./icons";
-import { saveSession, addWorkDay } from "../context/actions";
+import { saveSession, addWorkDay, showMsg } from "../context/actions";
 
 const AddSession = () => {
   return (
@@ -67,6 +67,12 @@ const Main = () => {
               sessionDay: new Date(Date.now()).toDateString(),
               parentProject: selectedProject,
               workingMinutes: parseInt(mins),
+            })
+          );
+          dispatch(
+            showMsg({
+              type: "success",
+              msg: "Session ended & saved 🎉 have a break and keep on hard work👏",
             })
           );
         } else if (seconds === 0 && minutes > 0) {

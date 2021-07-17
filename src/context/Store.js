@@ -3,6 +3,10 @@ import { createContext, useEffect, useReducer } from "react";
 import reducer from "./reducer";
 
 const initialState = {
+  msg: {
+    type: null,
+    msg: null,
+  },
   isSidebarOpen: false,
   showAddProject: {
     show: false,

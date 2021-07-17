@@ -1,3 +1,10 @@
+const showMsg = (state, msg) => {
+  return {
+    ...state,
+    msg,
+  };
+};
+
 const openSidebar = (state, isSidebarOpen) => {
   return {
     ...state,
@@ -137,6 +144,9 @@ const changeThreeStarVal = (state, threeStarVal) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SHOW_MSG":
+      return showMsg(state, action.payload.msg);
+
     case "TOGGLE_SIDEBAR":
       return openSidebar(state, action.payload.isSidebarOpen);
 
