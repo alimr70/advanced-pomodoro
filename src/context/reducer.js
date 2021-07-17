@@ -17,18 +17,38 @@ const addWorkDay = (state, newWorkDay) => {
     (workDay) => workDay.day === newWorkDay.day
   );
   if (foundWorkDay) {
-    let newWorkDays = state.workDays.filter(
+    let newWorkDaysState = state.workDays.filter(
       (workDay) => workDay.day !== foundWorkDay.day
     );
     foundWorkDay.workingMinutes += newWorkDay.workingMinutes;
     return {
       ...state,
-      workDays: [foundWorkDay, ...newWorkDays],
+      workDays: [foundWorkDay, ...newWorkDaysState],
     };
   }
   return {
     ...state,
     workDays: [newWorkDay, ...state.workDays],
+  };
+};
+
+const addProject = (state, newProject) => {
+  let foundProject = state.projects.find(
+    (project) => project.id === newProject.id
+  );
+  if (foundProject) {
+    let newProjectsState = state.projects.filter(
+      (project) => project.id !== foundProject.id
+    );
+    foundProject.workingMinutes += newProject.workingMinutes;
+    return {
+      ...state,
+      projects: [foundProject, ...newProjectsState],
+    };
+  }
+  return {
+    ...state,
+    projects: [newProject, ...state.projects],
   };
 };
 
@@ -103,6 +123,9 @@ const reducer = (state, action) => {
 
     case "ADD_WORKDAY":
       return addWorkDay(state, action.payload.workDay);
+
+    case "ADD_PROJECT":
+      return addProject(state, action.payload.project);
 
     case "CHANGE_ONE_STAR_VAL":
       return changeOneStarVal(state, action.payload.oneStarVal);

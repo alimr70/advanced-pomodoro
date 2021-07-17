@@ -23,6 +23,15 @@ export const addWorkDay = (workDay) => {
   };
 };
 
+export const addProjcet = (project) => {
+  return {
+    type: "ADD_PROJECT",
+    payload: {
+      project,
+    },
+  };
+};
+
 export const changeOneStarVal = (oneStarVal) => {
   return {
     type: "CHANGE_ONE_STAR_VAL",

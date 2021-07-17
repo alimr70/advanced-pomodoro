@@ -3,7 +3,7 @@ import { Store } from "../context/Store";
 import { Link } from "react-router-dom";
 import { GoBackIcon } from "./icons";
 import { nanoid } from "nanoid";
-import { saveSession, addWorkDay } from "../context/actions";
+import { saveSession, addWorkDay, addProjcet } from "../context/actions";
 
 const AddSession = () => {
   return (
@@ -124,6 +124,12 @@ const Main = () => {
                       id: nanoid(5),
                       sessionDay: new Date(Date.now()).toDateString(),
                       parentProject: selectedProject,
+                      workingMinutes: parseInt(selectedSessionTime),
+                    })
+                  );
+                  dispatch(
+                    addProjcet({
+                      id: selectedProject,
                       workingMinutes: parseInt(selectedSessionTime),
                     })
                   );

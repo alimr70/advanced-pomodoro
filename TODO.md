@@ -22,8 +22,11 @@
 ✅ Adjust width of Sessions session component
 ✅ Adjust width of workingDay component
 ✅ Save new session with addSession component
-❌ Save new project with project component
+✅ Add new project with project component
+✅ Dynamically show saved projects
+✅ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too
+❌ Add new session working minutes to its project
 ❌ Delete session with the trash btn
 ❌ Delete project with the trash btn
 ❌ Edit project name with the edit btn
-✅ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too
+❌ Fix when saving new session to not accept it without a project selected
