@@ -32,4 +32,4 @@
 ✅ Make add project component state in the app's context
 ✅ Edit project name with the edit btn
 ✅ Fix when saving new session to not accept it without a project selected
-❌ Make progress bar dynamic
+✅ Make progress bar dynamic
