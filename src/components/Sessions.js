@@ -43,7 +43,7 @@ const Main = () => {
   );
   const getProjectTitle = (projectId) => {
     const targetProject = projects.find((project) => project.id === projectId);
-    return targetProject.title;
+    return targetProject ? targetProject.title : "N/A";
   };
   return (
     <>
@@ -53,7 +53,6 @@ const Main = () => {
           <Session
             key={session.id}
             id={session.id}
-            projectId={session.parentProject}
             workingMinutes={session.workingMinutes}
             projectTitle={getProjectTitle(session.parentProject)}
           />
@@ -63,7 +62,7 @@ const Main = () => {
   );
 };
 
-const Session = ({ id, workingMinutes, projectId, projectTitle }) => {
+const Session = ({ id, workingMinutes, projectTitle }) => {
   const { dispatch } = useContext(Store);
   return (
     <div className="py-1 flex items-center justify-center font-normal">

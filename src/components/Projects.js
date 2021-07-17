@@ -1,7 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { GoBackIcon, TrashcanIcon, RoundedPlusIcon, EditIcon } from "./icons";
-import { addProjcet } from "../context/actions";
+import {
+  addProjcet,
+  deleteProject,
+  toggleAddProject,
+} from "../context/actions";
 import { Store } from "../context/Store";
 import { nanoid } from "nanoid";
 
@@ -36,9 +40,8 @@ const Nav = () => {
 };
 
 const Main = () => {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { projects } = state;
-  const [showAddProject, setShowAddProject] = useState(false);
   return (
     <>
       {/* Main section - working session time options buttons */}
@@ -47,24 +50,21 @@ const Main = () => {
           <Project key={project.id} id={project.id} title={project.title} />
         ))}
         <button
-          className="p-5 self-center mt-auto bg-green-500 rounded-full"
+          className="p-2 mb-2 self-center mt-auto bg-green-500 rounded-full"
           onClick={() => {
-            setShowAddProject(true);
+            dispatch(toggleAddProject(true));
           }}>
           <RoundedPlusIcon color="text-gray-100" />
         </button>
       </main>
 
-      <AddProject
-        showAddProject={showAddProject}
-        setShowAddProject={setShowAddProject}
-      />
+      <AddProject />
     </>
   );
 };
 
 const Project = ({ id, title }) => {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { sessions } = state;
   let workingMinutes = 0;
 
@@ -76,7 +76,11 @@ const Project = ({ id, title }) => {
 
   return (
     <div className="bg-gray-900 my-px flex items-center justify-center font-normal">
-      <div className="p-3">
+      <div
+        className="p-3 cursor-pointer"
+        onClick={() => {
+          dispatch(toggleAddProject(true, id));
+        }}>
         <EditIcon />
       </div>
 
@@ -84,25 +88,31 @@ const Project = ({ id, title }) => {
 
       <div className="mr-10">{workingMinutes}</div>
 
-      <div>
+      <div
+        className="cursor-pointer"
+        onClick={() => {
+          dispatch(deleteProject(id));
+        }}>
         <TrashcanIcon />
       </div>
     </div>
   );
 };
 
-const AddProject = ({ showAddProject, setShowAddProject }) => {
-  const { dispatch } = useContext(Store);
+const AddProject = () => {
+  const { state, dispatch } = useContext(Store);
+  const { showAddProject } = state;
   const [projectTitle, setProjectTitle] = useState("");
 
-  const showOrNot = showAddProject ? "" : "hidden";
+  const showOrNot = showAddProject.show ? "" : "hidden";
+  const hasId = showAddProject.id ? showAddProject.id : nanoid(5);
   return (
     <div
       className={`${showOrNot} absolute w-full h-full bg-black bg-opacity-70 flex items-center justify-center`}
       id="bg"
       onClick={(e) => {
         if (e.target.id === "bg") {
-          setShowAddProject(false);
+          dispatch(toggleAddProject(false));
         }
       }}>
       <div className="bg-gray-800 p-5 rounded-md flex items-center justify-center flex-col">
@@ -123,14 +133,14 @@ const AddProject = ({ showAddProject, setShowAddProject }) => {
             if (/\S/.test(projectTitle)) {
               dispatch(
                 addProjcet({
-                  id: nanoid(5),
+                  id: hasId,
                   title: projectTitle,
                   workingMinutes: 0,
                 })
               );
             }
             setProjectTitle("");
-            setShowAddProject(false);
+            dispatch(toggleAddProject(false, null));
           }}>
           Add
         </button>

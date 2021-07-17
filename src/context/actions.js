@@ -5,6 +5,13 @@ export const toggleSidbar = (isSidebarOpen) => {
   };
 };
 
+export const toggleAddProject = (show, id) => {
+  return {
+    type: "TOGGLE_ADD_PROJECT",
+    payload: { showAddProject: { show, id } },
+  };
+};
+
 export const saveSession = (session) => {
   return {
     type: "SAVE_SESSION",
@@ -37,6 +44,15 @@ export const addProjcet = (project) => {
     type: "ADD_PROJECT",
     payload: {
       project,
+    },
+  };
+};
+
+export const deleteProject = (projectId) => {
+  return {
+    type: "DELETE_PROJECT",
+    payload: {
+      projectId,
     },
   };
 };

@@ -28,6 +28,8 @@
 ✅ Add new session working minutes to its project
 ✅ Delete session with the trash btn
 ✅ Make project's and working days's working minutes depend on the sum of sessions working days
-❌ Delete project with the trash btn
-❌ Edit project name with the edit btn
-❌ Fix when saving new session to not accept it without a project selected
+✅ Delete project with the trash btn
+✅ Make add project component state in the app's context
+✅ Edit project name with the edit btn
+✅ Fix when saving new session to not accept it without a project selected
+❌ Make progress bar dynamic

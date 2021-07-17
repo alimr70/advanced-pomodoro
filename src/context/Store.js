@@ -4,6 +4,10 @@ import reducer from "./reducer";
 
 const initialState = {
   isSidebarOpen: false,
+  showAddProject: {
+    show: false,
+    id: null,
+  },
   stars: {
     one: 20,
     two: 40,

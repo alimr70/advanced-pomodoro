@@ -82,7 +82,7 @@ const Main = () => {
                 onChange={(e) => {
                   setSelectedSessionTime(e.target.value);
                 }}>
-                <option value="">Choose session duration</option>
+                <option>Choose session duration</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
@@ -119,14 +119,16 @@ const Main = () => {
                       workingMinutes: parseInt(selectedSessionTime),
                     })
                   );
-                  dispatch(
-                    saveSession({
-                      id: nanoid(5),
-                      sessionDay: new Date(Date.now()).toDateString(),
-                      parentProject: selectedProject,
-                      workingMinutes: parseInt(selectedSessionTime),
-                    })
-                  );
+                  if (selectedSessionTime) {
+                    dispatch(
+                      saveSession({
+                        id: nanoid(5),
+                        sessionDay: new Date(Date.now()).toDateString(),
+                        parentProject: selectedProject,
+                        workingMinutes: parseInt(selectedSessionTime),
+                      })
+                    );
+                  }
                 }}>
                 Add Session
               </button>

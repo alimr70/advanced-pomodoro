@@ -5,6 +5,16 @@ const openSidebar = (state, isSidebarOpen) => {
   };
 };
 
+const toggleAddProject = (state, { show, id }) => {
+  return {
+    ...state,
+    showAddProject: {
+      show,
+      id,
+    },
+  };
+};
+
 const saveSession = (state, session) => {
   return {
     ...state,
@@ -40,11 +50,27 @@ const addProject = (state, newProject) => {
     (project) => project.id === newProject.id
   );
   if (foundProject) {
-    return state;
+    let newProjectsState = state.projects.filter(
+      (project) => project.id !== foundProject.id
+    );
+    return {
+      ...state,
+      projects: [newProject, ...newProjectsState],
+    };
   }
   return {
     ...state,
     projects: [newProject, ...state.projects],
+  };
+};
+
+const deleteProject = (state, projectId) => {
+  let newProjectsState = state.projects.filter(
+    (project) => project.id !== projectId
+  );
+  return {
+    ...state,
+    projects: [...newProjectsState],
   };
 };
 
@@ -114,6 +140,9 @@ const reducer = (state, action) => {
     case "TOGGLE_SIDEBAR":
       return openSidebar(state, action.payload.isSidebarOpen);
 
+    case "TOGGLE_ADD_PROJECT":
+      return toggleAddProject(state, action.payload.showAddProject);
+
     case "SAVE_SESSION":
       return saveSession(state, action.payload.session);
 
@@ -125,6 +154,9 @@ const reducer = (state, action) => {
 
     case "ADD_PROJECT":
       return addProject(state, action.payload.project);
+
+    case "DELETE_PROJECT":
+      return deleteProject(state, action.payload.projectId);
 
     case "CHANGE_ONE_STAR_VAL":
       return changeOneStarVal(state, action.payload.oneStarVal);

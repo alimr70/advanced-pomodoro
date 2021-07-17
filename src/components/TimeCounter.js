@@ -42,7 +42,7 @@ const Main = () => {
   let { mins } = useParams();
 
   const [isCounting, setIsCounting] = useState(false);
-  const [selectedProject, setSelectedProject] = useState("");
+  const [selectedProject, setSelectedProject] = useState("N/A");
   const [minutes, setMenutes] = useState(mins);
   const [seconds, setSeconds] = useState(0);
 
