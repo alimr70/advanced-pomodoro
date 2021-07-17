@@ -12,19 +12,22 @@ const saveSession = (state, session) => {
   };
 };
 
+const deleteSession = (state, sessionId) => {
+  let newSessionState = state.sessions.filter(
+    (session) => session.id !== sessionId
+  );
+  return {
+    ...state,
+    sessions: [...newSessionState],
+  };
+};
+
 const addWorkDay = (state, newWorkDay) => {
   let foundWorkDay = state.workDays.find(
     (workDay) => workDay.day === newWorkDay.day
   );
   if (foundWorkDay) {
-    let newWorkDaysState = state.workDays.filter(
-      (workDay) => workDay.day !== foundWorkDay.day
-    );
-    foundWorkDay.workingMinutes += newWorkDay.workingMinutes;
-    return {
-      ...state,
-      workDays: [foundWorkDay, ...newWorkDaysState],
-    };
+    return state;
   }
   return {
     ...state,
@@ -37,14 +40,7 @@ const addProject = (state, newProject) => {
     (project) => project.id === newProject.id
   );
   if (foundProject) {
-    let newProjectsState = state.projects.filter(
-      (project) => project.id !== foundProject.id
-    );
-    foundProject.workingMinutes += newProject.workingMinutes;
-    return {
-      ...state,
-      projects: [foundProject, ...newProjectsState],
-    };
+    return state;
   }
   return {
     ...state,
@@ -120,6 +116,9 @@ const reducer = (state, action) => {
 
     case "SAVE_SESSION":
       return saveSession(state, action.payload.session);
+
+    case "DELETE_SESSION":
+      return deleteSession(state, action.payload.sessionId);
 
     case "ADD_WORKDAY":
       return addWorkDay(state, action.payload.workDay);

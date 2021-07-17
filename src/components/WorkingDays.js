@@ -52,9 +52,18 @@ const Main = () => {
   );
 };
 
-const WorkingDay = ({ day, workingMinutes }) => {
+const WorkingDay = ({ day }) => {
   const { state } = useContext(Store);
   const { one, two, three } = state.stars;
+  const { sessions } = state;
+  let workingMinutes = 0;
+
+  sessions.map((session) => {
+    return session.sessionDay === day
+      ? (workingMinutes += session.workingMinutes)
+      : "";
+  });
+
   const isStar = (starNum, workingMinutes) => {
     return workingMinutes > starNum ? "text-yellow-300" : "text-gray-900";
   };

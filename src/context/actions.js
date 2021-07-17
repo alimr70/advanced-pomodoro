@@ -14,6 +14,15 @@ export const saveSession = (session) => {
   };
 };
 
+export const deleteSession = (sessionId) => {
+  return {
+    type: "DELETE_SESSION",
+    payload: {
+      sessionId,
+    },
+  };
+};
+
 export const addWorkDay = (workDay) => {
   return {
     type: "ADD_WORKDAY",

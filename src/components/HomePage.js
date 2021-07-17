@@ -133,16 +133,24 @@ const Main = () => {
 
 const Footer = () => {
   const { state } = useContext(Store);
-  const { workDays } = state;
+  const { sessions } = state;
   const { one, two, three } = state.stars;
 
-  const todaysWorkDay = workDays.find(
-    (workDay) => workDay.day === new Date(Date.now()).toDateString()
-  );
+  const todaysWorkDay = new Date(Date.now()).toDateString();
+
+  let workingMinutes = 0;
+
+  sessions.map((session) => {
+    return todaysWorkDay
+      ? session.sessionDay === todaysWorkDay
+        ? (workingMinutes += session.workingMinutes)
+        : ""
+      : "";
+  });
 
   const isStar = (starNum, todaysWorkDay) => {
     return todaysWorkDay
-      ? todaysWorkDay.workingMinutes > starNum
+      ? workingMinutes > starNum
         ? "text-yellow-300"
         : "text-gray-400"
       : "text-gray-400";
@@ -157,10 +165,7 @@ const Footer = () => {
           id="footer-container"
           className="w-5/6 sm:w-4/5 md:w-4/6 lg:w-7/12 xl:w-1/2 h-full mx-auto justify-self-center self-center grid">
           <div className="grid xs:grid-flow-col items-center justify-items-center">
-            <span>
-              Your achievment today:{" "}
-              {todaysWorkDay ? todaysWorkDay.workingMinutes : 0} min
-            </span>
+            <span>Your achievment today: {workingMinutes} min</span>
             <div className="flex">
               <span>
                 <StarIcon color={isStar(one, todaysWorkDay)} />

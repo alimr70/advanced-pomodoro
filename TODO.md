@@ -25,8 +25,9 @@
 ✅ Add new project with project component
 ✅ Dynamically show saved projects
 ✅ Adjust setting to be like the app when the one star is dragged to the end all other stars are dragged too
-❌ Add new session working minutes to its project
-❌ Delete session with the trash btn
+✅ Add new session working minutes to its project
+✅ Delete session with the trash btn
+✅ Make project's and working days's working minutes depend on the sum of sessions working days
 ❌ Delete project with the trash btn
 ❌ Edit project name with the edit btn
 ❌ Fix when saving new session to not accept it without a project selected

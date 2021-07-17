@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GoBackIcon, TrashcanIcon } from "./icons";
 import { Store } from "../context/Store";
+import { deleteSession } from "../context/actions";
 
 const Sessions = () => {
   return (
@@ -51,6 +52,8 @@ const Main = () => {
         {targetSessions.map((session) => (
           <Session
             key={session.id}
+            id={session.id}
+            projectId={session.parentProject}
             workingMinutes={session.workingMinutes}
             projectTitle={getProjectTitle(session.parentProject)}
           />
@@ -60,7 +63,8 @@ const Main = () => {
   );
 };
 
-const Session = ({ workingMinutes, projectTitle }) => {
+const Session = ({ id, workingMinutes, projectId, projectTitle }) => {
+  const { dispatch } = useContext(Store);
   return (
     <div className="py-1 flex items-center justify-center font-normal">
       {/* Stars */}
@@ -74,7 +78,11 @@ const Session = ({ workingMinutes, projectTitle }) => {
       </div>
 
       {/* Total minutes cound */}
-      <div>
+      <div
+        className="cursor-pointer"
+        onClick={() => {
+          dispatch(deleteSession(id));
+        }}>
         <TrashcanIcon />
       </div>
     </div>

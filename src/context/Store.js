@@ -12,7 +12,6 @@ const initialState = {
   workDays: [
     {
       day: "Wed Jul 07 2021",
-      workingMinutes: 65,
     },
   ],
   sessions: [
@@ -33,12 +32,10 @@ const initialState = {
     {
       id: "111",
       title: "Project 111",
-      workingMinutes: 90,
     },
     {
       id: "222",
       title: "Project 222",
-      workingMinutes: 60,
     },
   ],
 };

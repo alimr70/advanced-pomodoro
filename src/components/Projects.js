@@ -44,12 +44,7 @@ const Main = () => {
       {/* Main section - working session time options buttons */}
       <main className="bg-gray-800 py-1 row-span-6 relative flex flex-col">
         {projects.map((project) => (
-          <Project
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            workingMinutes={project.workingMinutes}
-          />
+          <Project key={project.id} id={project.id} title={project.title} />
         ))}
         <button
           className="p-5 self-center mt-auto bg-green-500 rounded-full"
@@ -68,7 +63,17 @@ const Main = () => {
   );
 };
 
-const Project = ({ id, title, workingMinutes }) => {
+const Project = ({ id, title }) => {
+  const { state } = useContext(Store);
+  const { sessions } = state;
+  let workingMinutes = 0;
+
+  sessions.map((session) => {
+    return session.parentProject === id
+      ? (workingMinutes += session.workingMinutes)
+      : "";
+  });
+
   return (
     <div className="bg-gray-900 my-px flex items-center justify-center font-normal">
       <div className="p-3">

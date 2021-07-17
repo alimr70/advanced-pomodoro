@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { RoundedPauseIcon, RoundedStartIcon, GoBackIcon } from "./icons";
-import { saveSession, addWorkDay, addProjcet } from "../context/actions";
+import { saveSession, addWorkDay } from "../context/actions";
 
 const AddSession = () => {
   return (
@@ -59,7 +59,6 @@ const Main = () => {
           dispatch(
             addWorkDay({
               day: new Date(Date.now()).toDateString(),
-              workingMinutes: parseInt(mins),
             })
           );
           dispatch(
@@ -67,12 +66,6 @@ const Main = () => {
               id: nanoid(5),
               sessionDay: new Date(Date.now()).toDateString(),
               parentProject: selectedProject,
-              workingMinutes: parseInt(mins),
-            })
-          );
-          dispatch(
-            addProjcet({
-              id: selectedProject,
               workingMinutes: parseInt(mins),
             })
           );
