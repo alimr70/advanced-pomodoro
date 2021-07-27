@@ -156,7 +156,9 @@ const Footer = () => {
       : "text-gray-400";
   };
 
-  const progressbarWidth = `${(workingMinutes / three) * 100}%`;
+  const progressbarWidth = `${
+    (workingMinutes / three) * 100 >= 100 ? 100 : (workingMinutes / three) * 100
+  }%`;
   const progressbarOneStarWidth = `${(one / three) * 100}%`;
   const progressbarTwoStarWidth = `${(two / three) * 100}%`;
 
