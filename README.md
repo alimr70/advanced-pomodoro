@@ -1,5 +1,7 @@
 # Advanced Pomodoro
 
+# Disclaimer: This app's idea its origin is form [Ali Muhammad Ali](https://www.youtube.com/user/flashawy) Youtube's channel and his android application [سلطة الإنجاز](https://www.youtube.com/watch?v=5qqMSWysowY)
+
 ## Description / Short story
 
 An upgraded minimal pomodoro technique application, which is used to track time of daily activities (work, project, habits, etc.) time through different sessions. I made it with React (Hooks), Context api, React-Router and Tailwindcss.
