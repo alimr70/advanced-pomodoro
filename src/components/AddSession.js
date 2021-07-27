@@ -134,6 +134,8 @@ const Main = () => {
                         msg: "Session saved 👍",
                       })
                     );
+                    setSelectedSessionTime(0);
+                    setSelectedProject("");
                   } else {
                     dispatch(
                       showMsg({
