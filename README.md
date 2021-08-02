@@ -8,6 +8,8 @@ An upgraded minimal pomodoro technique application, which is used to track time 
 
 ## Preview
 
+![Preview](preview.gif)
+
 ## How To Install
 
 ### 1. Clone the project
